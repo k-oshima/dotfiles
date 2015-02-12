@@ -1,0 +1,8 @@
+[user]
+	name = Kouichi OHSHIMA
+	email = koshima@example.com
+
+[core]
+	excludesfile = /home/koshima/.gitignore
+[push]
+	default = simple

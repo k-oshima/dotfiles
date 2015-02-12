@@ -1,0 +1,14 @@
+*.rb~
+*.rb#
+*.js~
+*.js#
+*.js.coffee~
+*.js.coffee#
+*.html~
+*.html#
+*.erb~
+*.erb#
+*.css~
+*.css#
+*.scss~
+*.scss#
