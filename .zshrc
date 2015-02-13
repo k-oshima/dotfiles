@@ -1,3 +1,4 @@
+fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
 compinit
 setopt HIST_IGNORE_DUPS
