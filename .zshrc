@@ -19,6 +19,8 @@ setopt HIST_IGNORE_SPACE
 
 PAGER=/usr/bin/lv
 
+alias ls='ls --show-control-chars'  # prepare for kanji as ???
+
 _set_env_git_current_branch() {
   GIT_CURRENT_BRANCH=$( git branch &> /dev/null | grep '^\*' | cut -b 3- )
 }
