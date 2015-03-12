@@ -7,8 +7,13 @@ promptinit
 prompt redhat
 autoload -U colors
 colors
-PROMPT="%{$fg[green]%}[%n@%m %1~]%#%{$reset_color%} "
-LEFT_PROMPT="%{$fg[green]%}[%n@%m"
+#local HOSTC=$'%{\e[38;5;'"$(printf "%d\n" 0x$(hostname|md5sum|cut -c1-2))"'m%}'
+#local DEFAULTC=$'%{\e[m%}'
+local HOSTCOLOR=$'\e[38;5;'"$(printf "%d\n" 0x$(hostname|md5sum|cut -c1-2))"'m'
+#PROMPT="%{$fg[green]%}[%n@%m %1~]%#%{$reset_color%} "
+PROMPT="%{$HOSTCOLOR%}[%n@%m %1~]%#%{$reset_color%} "
+#LEFT_PROMPT="%{$fg[green]%}[%n@%m"
+LEFT_PROMPT="%{$HOSTCOLOR%}[%n@%m"
 RIGHT_PROMPT=" %1~]%#%{$reset_color%} "
 
 HISTFILE=~/.history
