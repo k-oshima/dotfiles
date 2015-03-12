@@ -7,9 +7,24 @@ promptinit
 prompt redhat
 autoload -U colors
 colors
+colornum() {
+	COLORNO="$(hostname|sum|cut -c1-2)"
+	# correct color looks like black ink
+        if [ "$COLORNO" = "10" ]; then
+                COLORNO="19"
+        fi
+        if [ "$COLORNO" = "e3" ]; then
+                COLORNO="e6"
+        fi
+        if [ "$COLORNO" = "e4" ]; then
+                COLORNO="e7"
+        fi
+}
+colornum
 #local HOSTC=$'%{\e[38;5;'"$(printf "%d\n" 0x$(hostname|md5sum|cut -c1-2))"'m%}'
 #local DEFAULTC=$'%{\e[m%}'
-local HOSTCOLOR=$'\e[38;5;'"$(printf "%d\n" 0x$(hostname|sum|cut -c1-2))"'m'
+#local HOSTCOLOR=$'\e[38;5;'"$(printf "%d\n" 0x$(hostname|sum|cut -c1-2))"'m'
+local HOSTCOLOR=$'\e[38;5;'"$(printf "%d\n" 0x$COLORNO)"'m'
 #PROMPT="%{$fg[green]%}[%n@%m %1~]%#%{$reset_color%} "
 PROMPT="%{$HOSTCOLOR%}[%n@%m %1~]%#%{$reset_color%} "
 #LEFT_PROMPT="%{$fg[green]%}[%n@%m"
