@@ -12,3 +12,14 @@
 *.css#
 *.scss~
 *.scss#
+.DS_Store
+Thumbs.db
+.svn
+.#*
+*~
+.*.swp
+\#*.*#
+.~lock.*
+
+coverage
+tags
