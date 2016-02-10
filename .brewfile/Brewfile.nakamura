@@ -1,0 +1,17 @@
+tap 'homebrew/versions'
+
+brew ‘git'
+
+brew 'direnv'
+
+brew 'readline'
+brew 'rbenv'
+brew 'ruby-build'
+
+brew 'mysql'
+brew 'redis'
+
+brew 'imagemagick'
+brew 'ghostscript'
+brew 'ffmpeg'
+brew 'homebrew/versions/phantomjs198'
