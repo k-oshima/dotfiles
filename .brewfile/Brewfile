@@ -2,22 +2,22 @@
 # tap repositories and their packages
 
 ## rcmdnk/file
-tap rcmdnk/file
-brew brew-file
+tap 'rcmdnk/file'
+brew 'brew-file'
 
 tap 'homebrew/versions'
 
 ## caskroom/cask
-tap caskroom/cask
-brew brew-cask
+tap 'caskroom/cask'
+brew 'brew-cask'
 
 # Other Homebrew packages
-brew autoconf
-brew lv
-brew openssl
-brew pkg-config
-brew rbenv
-brew ruby-build
+brew 'autoconf'
+brew 'lv'
+brew 'openssl'
+brew 'pkg-config'
+brew 'rbenv'
+brew 'ruby-build'
 
 # clone from Nakamura-san Brewfile
 brew 'git'
