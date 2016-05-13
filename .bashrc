@@ -112,6 +112,23 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# OS X
+if [ "$(uname)" == 'Darwin' ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+  # Git
+  if [ -f $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ]; then
+    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+  fi
+  if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
+    source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+  fi
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='\h\[\033[00m\]:\W\[\033[31m\]$(__git_ps1 [%s])\[\033[00m\]\$ '
+fi
+
 export PATH="/home/koshima/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
