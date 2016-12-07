@@ -127,10 +127,15 @@ if [ "$(uname)" == 'Darwin' ]; then
   fi
   GIT_PS1_SHOWDIRTYSTATE=true
   export PS1='\h\[\033[00m\]:\W\[\033[31m\]$(__git_ps1 [%s])\[\033[00m\]\$ '
+  # Brew-file
+  if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+    source $(brew --prefix)/etc/brew-wrap
+  fi
 fi
 
-export PATH="/home/koshima/.rbenv/bin:$PATH"
+export PATH="${HOME}/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 #enable Apache2 kicks Rails app
 export PATH=/var/www/SW_Cloud/vendor/bin:$PATH
+

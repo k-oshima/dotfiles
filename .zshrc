@@ -38,8 +38,10 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 PAGER=/usr/bin/lv
+export PATH="${HOME}/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
-alias ls='ls --show-control-chars'  # prepare for kanji as ???
+# alias ls='ls --show-control-chars'  # prepare for kanji as ???
 
 _set_env_git_current_branch() {
   GIT_CURRENT_BRANCH=$( git branch &> /dev/null | grep '^\*' | cut -b 3- )
@@ -73,3 +75,40 @@ chpwd()
   _set_env_git_current_branch
   _update_prompt
 }
+
+# rbenv completions
+if [[ ! -o interactive ]]; then
+    return
+fi
+
+compctl -K _rbenv rbenv
+
+_rbenv() {
+  local words completions
+  read -cA words
+
+  if [ "${#words}" -eq 2 ]; then
+    completions="$(rbenv commands)"
+  else
+    completions="$(rbenv completions ${words[2,-2]})"
+  fi
+
+  reply=("${(ps:\n:)completions}")
+}
+
+# https://github.com/direnv/direnv
+eval "$(direnv hook zsh)"
+
+case ${OSTYPE} in
+  darwin*)
+    bindkey '' forward-word
+    bindkey '' backward-word
+    # Brew-file
+    if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+      source $(brew --prefix)/etc/brew-wrap
+    fi
+    ;;
+  linux*)
+    ;;
+esac
+
