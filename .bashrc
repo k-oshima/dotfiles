@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
 fi
 
 # OS X
-if [ "$(uname)" == 'Darwin' ]; then
+if [ "$(uname)" = 'Darwin' ]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
@@ -131,11 +131,17 @@ if [ "$(uname)" == 'Darwin' ]; then
   if [ -f $(brew --prefix)/etc/brew-wrap ]; then
     source $(brew --prefix)/etc/brew-wrap
   fi
+  #nodejs by nodebrew
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+  #Go golang
+  export GOPATH=$HOME/go
+  export GOROOT=/usr/local/opt/go/libexec
+  export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
 export PATH="${HOME}/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 #enable Apache2 kicks Rails app
-export PATH=/var/www/SW_Cloud/vendor/bin:$PATH
+## export PATH=/var/www/SW_Cloud/vendor/bin:$PATH
 
