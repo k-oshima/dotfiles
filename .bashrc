@@ -133,6 +133,9 @@ if [ "$(uname)" = 'Darwin' ]; then
   fi
   #nodejs by nodebrew
   export PATH=$HOME/.nodebrew/current/bin:$PATH
+  #Google Cloud SDK
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
   #Go golang
   export GOPATH=$HOME/go
   export GOROOT=/usr/local/opt/go/libexec

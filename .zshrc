@@ -37,9 +37,14 @@ SAVEHIST=2000
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
-PAGER=/usr/bin/lv
+# export PAGER=/usr/local/bin/lv
+# export EDITOR=/usr/local/bin/emacsclient
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH="${HOME}/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+#nodejs by nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # alias ls='ls --show-control-chars'  # prepare for kanji as ???
 
@@ -107,6 +112,13 @@ case ${OSTYPE} in
     if [ -f $(brew --prefix)/etc/brew-wrap ]; then
       source $(brew --prefix)/etc/brew-wrap
     fi
+    export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib -L/usr/local/opt/imagemagick@6/lib -L/usr/local/opt/openssl/lib"
+    export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include -I/usr/local/opt/imagemagick@6/include -I/usr/local/opt/openssl/include"
+    export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
+    export HOMEBREW_GITHUB_API_TOKEN=""
+    export BUNDLE_GITHUB__COM="github_user:"
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
     ;;
   linux*)
     ;;
